@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 graph = {}
-graph["you"] = ["alice","bob","claire"]
+# graph["you"] = ["alice","bob","claire"]
 graph["start"]["a"] = 6
 graph["start"]["b"] = 2
 graph["a"] = {}
@@ -35,3 +35,13 @@ while node is not None:
 			parents[n] = node
 	processed.append(node)
 	node = find_lowest_cost_node(costs)
+
+def find_lowest_cost_node(costs):
+	lowest_cost = float("inf")
+	lowest_cost_node = None
+	for node in costs:
+		cost = costs[node]
+		if cost < lowest_cost and node not in processed:
+			lowest_cost = cost
+			lowest_cost_node =  node
+	return lowest_cost_node
